@@ -1,0 +1,179 @@
+<div class="col-md-6  offset-md-3">
+  <h3 class="text-center">Registro de Canchas</h3>
+
+  <form #miForm="ngForm" (ngSubmit)="onSubmit(miForm)" novalidate>
+
+
+    <div class="autocomplete-container">
+      <label>Nombre:</label>
+      <input
+        id="search-input"
+        type="text"
+
+        [ngModel]="query()"
+        (input)="onInput($event)"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        placeholder="Nombre de la Cancha..."
+        autocomplete="off"
+        class="form-control"
+        name="query()"
+      />
+
+      @if (isDropdownOpen() && filteredItems().length > 0) {
+        <ul class="autocomplete-dropdown, contenedor-flotante">
+          @for (item of filteredItems(); track item) {
+            <li class="autocomplete-item">
+              {{ item }}
+            </li>
+          }
+        </ul>
+      }
+
+
+    </div>
+    <!-- Mensaje de error para Nombre -->
+    <div *ngIf= nombreRepetido >
+      <small class="text-danger">El nombre esta REPETIDO. "El nombre debe ser único"</small>
+    </div>
+    <div class="form-group">
+      <input type="hidden" class="form-control" id="nombre" [(ngModel)]="cancha.nombre" #nombre="ngModel" name="nombre"
+        required="true" placeholder="Escriba aquí el nombre de la Cancha" minlength="4" maxlength="100"  >
+    </div>
+
+
+      <br/>
+      <!--
+      <div class="form-group">
+        <label>Tipo:</label>
+        <input type="text" class="form-control" id="tipo" [(ngModel)]="cancha.tipo" name="tipo"
+          required="true" placeholder="Tipo de deporte" minlength="4" maxlength="100"  >
+
+      </div>
+
+      -->
+    <div>
+      <label>Tipo:</label>
+      <p>
+      <select  class="select-moderno" name="miselect" [(ngModel)]="cancha.tipo">
+      <option [value]="item" *ngFor="let item of listaTipo">{{item}}</option>
+      </select>
+      </p>
+
+    </div>
+
+
+
+     <br/>
+      <div class="form-group">
+        <label>Capacidad:</label>
+        <input type="text" class="form-control" id="capacidad" [(ngModel)]="cancha.capacidad" name="capacidad"
+          required="true" placeholder="Número de jugadores" minlength="1" maxlength="2"  >
+      </div>
+        <!-- Mensaje de error para CAPACIDAD-->
+        <div *ngIf= capacidadError >
+          <small class="text-danger">La Capacidad debe tener un valor entre 1 y 50 (personas)"</small>
+        </div>
+
+      <!--
+      <div class="form-group">
+        <label>Apertura:</label>
+        <input type="text" class="form-control" id="apertura" [(ngModel)]="cancha.apertura" name="apertura"
+          required="true"  value="{{ selectedDateTime1() | date:'medium' }}" >
+      </div>
+      -->
+<br/>
+<div class="p-6">
+  <label class="block mb-2 font-medium">Apertura:</label>
+
+  <ngxsmk-datepicker
+    #startDatePicker
+    [(ngModel)]="cancha.apertura"
+    name="apertura"
+    [locale]="'en-GB'"
+    mode="single"
+    [showTime]="true"
+    [use24Hour]="true"
+    [minuteInterval]="15"
+    [minDate]="minimumDate1"
+    displayFormat="DD/MM/YYYY hh:mm a"
+    [(value)]="selectedDateTime1"
+    >
+  </ngxsmk-datepicker>
+
+<!--
+  <p class="mt-4">Valor actual: {{ selectedDateTime1() | date:'medium' }}</p>
+-->
+</div>
+
+        <!-- Mensaje de error para FECHAS APERTURA-->
+        <div *ngIf= fechasError >
+          <small class="text-danger">La fecha de Apertura debe ser menor a la fecha de Cierre"</small>
+        </div>
+        <!-- Mensaje de error para HORAS -->
+        <div *ngIf= horasError >
+          <small class="text-danger">La hora de Apertura debe ser menor a la hora de Cierre"</small>
+        </div>
+
+
+     <!--
+      <div class="form-group">
+        <label>Cierre:</label>
+        <input #miInput type="text" class="form-control" id="cierre" [(ngModel)]="cancha.cierre" name="cierre"
+          required="true"  value="{{ selectedDateTime2() | date:'medium' }}" >
+      </div>
+      -->
+<br/>
+    <div class="p-6">
+      <label class="block mb-2 font-medium">Cierre:</label>
+
+      <ngxsmk-datepicker
+        #endDatePicker
+         [(ngModel)]="cancha.cierre" name="cierre"
+        [locale]="'en-GB'"
+        mode="single"
+        [showTime]="true"
+        [use24Hour]="true"
+        [minuteInterval]="15"
+        [minDate]="minimumDate2"
+        displayFormat="DD/MM/YYYY hh:mm a"
+        [(value)]="selectedDateTime2"
+        >
+      </ngxsmk-datepicker>
+      <!--
+      <p class="mt-4">Valor actual: {{ selectedDateTime2() | date:'medium' }}</p>
+      -->
+
+    </div>
+        <!-- Mensaje de error para FECHAS CIERRE-->
+        <div *ngIf= fechasError >
+          <small class="text-danger">La fecha de Cierre debe ser mayor a la fecha de Apertura"</small>
+        </div>
+        <!-- Mensaje de error para HORAS -->
+        <div *ngIf= horasError >
+          <small class="text-danger">La hora de Cierre debe ser mayor a la hora de Apertura"</small>
+        </div>
+
+
+      <br/>
+      <div class="form-group">
+        <label>Tarifa:</label>
+        <input type="text" class="form-control" id="tarifa" [(ngModel)]="cancha.tarifa" name="tarifa"
+          required="true" placeholder="Escriba aquí el nombre de la Cancha" minlength="1" maxlength="2" >
+      </div>
+        <!-- Mensaje de error para TARIFA-->
+        <div *ngIf= tarifaError >
+          <small class="text-danger">El monto de la tarifa debe ser mayor a $5.00"</small>
+        </div>
+
+
+
+
+    <br/>
+    <br/>
+    <button class="btn btn-success" type="submit" [disabled]="miForm.invalid" >Guardar</button>
+  </form>
+</div>
+
+
+

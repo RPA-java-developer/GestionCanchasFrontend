@@ -1,3 +1,22 @@
-<h1 class="text-center">{{title()}}</h1>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a routerLink="/canchas"  routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-link">Lista de Canchas</a>
+    </li>
+    <li class="nav-item">
+      <a routerLink="/registrar-cancha"  routerLinkActive="active" class="nav-link">Registrar una Cancha</a>
+    </li>
+  </ul>
+</nav>
 
-<router-outlet />
+<h1 class="text-center">{{title()}}</h1>
+<br>
+<div class="container">
+  <!--
+    <app-lista-canchas></app-lista-canchas>
+  -->
+  <router-outlet></router-outlet>
+</div>
+
+
+

@@ -1,0 +1,76 @@
+.contenedor-flotante {
+ /* position: fixed;*/
+
+  /*bottom: 50px; /* Distancia desde la parte inferior */
+  /*right: 50px;  /* Distancia desde la derecha */
+
+
+  position: fixed; /* Esencial para el contenedor */
+  width: 200px;
+  height: 200px;
+
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+
+  /* Estilos visuales opcionales */
+  width: 300px;
+  height: 200px;
+  border-radius: 5%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  /*cursor: pointer;*/
+}
+
+.contenedor-flotante:hover {
+  background-color: #0056b3;
+}
+
+/* Activación del nuevo motor de renderizado del select */
+@supports (appearance: base-select) {
+  .select-moderno,
+  .select-moderno::picker(select) {
+    appearance: base-select;
+  }
+}
+
+/* Estilo del botón del select */
+.select-moderno {
+  background-color: #ffffff;
+  color: #818181;
+  padding: 10px 20px;
+  border-radius: 2px;
+  border: solid;
+  font-weight: bold;
+  width: 500px;
+  height: 38px;
+}
+
+/* Estilo de la caja desplegable completa (El contenedor de las opciones) */
+.select-moderno::picker(select) {
+  background-color: #464469;
+  border: 1px solid #221f46;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo detallado de las opciones individuales */
+.select-moderno option {
+  color: #cad3f1;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Efecto Hover al pasar por encima de una opción */
+.select-moderno option:hover {
+  background-color: #6359db;
+  color: #ffffff;
+}
+
+/* Estilo específico para la opción que está seleccionada activamente */
+.select-moderno option:checked {
+  background-color: #8587f7;
+  color: #ffffff;
+}

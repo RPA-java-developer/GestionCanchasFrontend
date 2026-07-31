@@ -1,0 +1,46 @@
+<h2>Lista de Canchas</h2>
+<table class="table table-striped">
+
+  <thead class="table-dark">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Tipo</th>
+      <th>Capacidad</th>
+      <th>Apertura</th>
+      <th>Cierre</th>
+      <th>Tarifa</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<!--
+<p>Total: {{ canchas().length }}</p>
+<pre>{{ canchas() | json }}</pre>
+-->
+
+    @for (item of canchas(); track item.id) {
+
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.tipo }}</td>
+        <td>{{ item.capacidad }}</td>
+        <td>{{ item.apertura }}</td>
+        <td>{{ item.cierre }}</td>
+        <td>{{ item.tarifa }}</td>
+      </tr>
+
+    } @empty {
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+    }
+
+  </tbody>
+
+</table>

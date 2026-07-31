@@ -42,3 +42,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Archivos de entorno (seguridad)
+src/environments/*.prod.ts
+.env

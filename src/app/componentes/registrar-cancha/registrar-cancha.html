@@ -42,20 +42,11 @@
     </div>
 
 
-      <br/>
-      <!--
-      <div class="form-group">
-        <label>Tipo:</label>
-        <input type="text" class="form-control" id="tipo" [(ngModel)]="cancha.tipo" name="tipo"
-          required="true" placeholder="Tipo de deporte" minlength="4" maxlength="100"  >
-
-      </div>
-
-      -->
+    <br/>
     <div>
       <label>Tipo:</label>
       <p>
-      <select  class="select-moderno" name="miselect" [(ngModel)]="cancha.tipo">
+      <select class="select-moderno" name="miselect" [(ngModel)]="cancha.tipo">
       <option [value]="item" *ngFor="let item of listaTipo">{{item}}</option>
       </select>
       </p>
@@ -174,6 +165,3 @@
     <button class="btn btn-success" type="submit" [disabled]="miForm.invalid" >Guardar</button>
   </form>
 </div>
-
-
-

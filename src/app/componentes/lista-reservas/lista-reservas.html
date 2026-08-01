@@ -1,0 +1,37 @@
+<h2>Lista de Reservaciones</h2>
+<table class="table table-striped">
+
+  <thead class="table-dark">
+    <tr>
+      <th>Id</th>
+      <th>idCancha</th>
+      <th>idUsuario</th>
+      <th>fechaReserva</th>
+      <th>horaInicio</th>
+      <th>tiempoReservado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    @for (item of reservas(); track item.idReserva) {
+      <tr>
+        <td>{{ item.idReserva }}</td>
+        <td>{{ item.idCancha }}</td>
+        <td>{{ item.idUsuario }}</td>
+        <td>{{ item.fechaReserva }}</td>
+        <td>{{ item.horaInicioReserva }}</td>
+        <td>{{ item.tiempoReservado }}</td>
+      </tr>
+    } @empty {
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+    }
+
+  </tbody>
+
+</table>

@@ -39,8 +39,6 @@ export class RegistrarCancha implements OnInit {
   listaTipo:string[]=["fútbol","básquet","tenis", "voleibol", "multiusos"];
   seleccionadoTipo:string;
 
-  color: string = 'red';
-
 
   // Access each distinct component instance directly
   @ViewChild('startDatePicker') startDatePicker!: NgxsmkDatepickerComponent;
@@ -55,53 +53,12 @@ export class RegistrarCancha implements OnInit {
 
 
 
-  fechaStr = "Jul 30, 2026, 12:45:00 AM";
-  //fechaStr:string = "";
-  //fechaStr = this.cancha.tarifa;
-
-  fecha = new Date(this.fechaStr);
-
-  formatoPersonalizado = new Intl.DateTimeFormat('es-ES', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(this.fecha);
-
-
  fechaApertura: Date;
  fechaCierre: Date;
- /*
-  arreglarFecha(otraFecha: any) {
 
-  this.fecha2 = new Date(otraFecha);
-
-  let formatoPersonalizado2 = new Intl.DateTimeFormat('es-ES', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(this.fecha2);
-
-  }
-  */
 
     // Define a reactive signal to hold the input state
   protected textInput = signal<string>('');
-
-  // Handler triggered on every keystroke/input mutation
-  onUserInputChange(event: Event): void {
-    const element = event.target as HTMLInputElement;
-    console.log(element.value);
-
-    this.fecha = new Date(element.value);
-
-    console.log(this.formatoPersonalizado);
-    this.textInput.set(element.value);
-  }
-
 
 
   constructor(private canchaServicio:CanchaService, private router:Router, private cdr: ChangeDetectorRef

@@ -5,6 +5,7 @@ import { NgFor } from '@angular/common';
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 
+
 @Component({
   selector: 'app-lista-canchas',
   standalone: true,
@@ -17,7 +18,6 @@ export class ListaCanchas implements OnInit {
 
   //canchas: Cancha[] = [];
   canchas = signal<Cancha[]>([]);
-  //canchas = signal<any>(null);
 
 
   constructor(private canchaServicio:CanchaService, private cdr: ChangeDetectorRef) {

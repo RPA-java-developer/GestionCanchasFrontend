@@ -1,0 +1,73 @@
+<div class="col-md-6  offset-md-3">
+  <h3 class="text-center">Registro de Reservas</h3>
+
+  <form class="form-container" [formGroup]="miFormulario" (ngSubmit)="guardar()" >
+
+    <!--
+    <div class="form-group">
+      <label for="idCancha">Cancha</label>
+      <input id="idCancha" type="text" formControlName="idCancha"  />
+      @if (miFormulario.get('idCancha')?.invalid && miFormulario.get('idCancha')?.touched) {
+        <small>La selección de una Cancha es obligatoria.</small>
+      }
+    </div>
+    -->
+    <div >
+      <p>
+        <select  class="form-group-select" id="pais" formControlName="idCancha" >
+          <option value="" disabled>-- Elija una opción --</option>
+          @for (item of lista; track item.id) {
+            <option [value]="item.id">
+              {{ item.nombre }}
+            </option>
+          }
+        </select>
+        @if (miFormulario.get('idCancha')?.invalid && miFormulario.get('idCancha')?.touched) {
+        <small>La selección de una Cancha es obligatoria.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Usuario:</label>
+      <input type="text" formControlName="idUsuario" />
+      @if (miFormulario.get('idUsuario')?.invalid && miFormulario.get('idUsuario')?.touched) {
+        <small>La seelección de un Usuario, es obligatoria.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Fecha:</label>
+      <ngxsmk-datepicker
+        mode="single"
+        formControlName="fechaReserva"
+        displayFormat="DD-MM-YYYY"
+        [(value)]="selectedDate"
+        [minDate]="minimumDate"
+        >
+      </ngxsmk-datepicker>
+    </div>
+
+
+    <div class="form-group">
+      <label>Hora de Inicio:</label>
+      <input type="text" formControlName="horaInicioReserva" />
+      @if (miFormulario.get('horaInicioReserva')?.invalid && miFormulario.get('horaInicioReserva')?.touched) {
+        <small>Se debe registrar la hora de inicio de la reserva, obligatorio.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Tiempo Reservado: (horas)</label>
+      <input type="text" formControlName="tiempoReservado" />
+      @if (miFormulario.get('tiempoReservado')?.invalid && miFormulario.get('tiempoReservado')?.touched) {
+        <small>Escribir la cantidad de horas a reservar la cancha, obligatorio.</small>
+      }
+    </div>
+
+
+    <br>
+    <button type="submit">Registrar</button>
+
+  </form>
+
+</div>

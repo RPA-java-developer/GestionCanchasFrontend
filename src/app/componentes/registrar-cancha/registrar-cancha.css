@@ -46,6 +46,20 @@
   height: 38px;
 }
 
+.componenteSelect {
+  width: 100%;
+}
+
+.contenedorHorario {
+  display: flex;
+  gap: 80px; /* Espacio entre columnas */
+}
+
+.columnaHorario {
+  flex: 1; /* Hace que ambas columnas ocupen el mismo ancho */
+}
+
+
 /* Estilo de la caja desplegable completa (El contenedor de las opciones) */
 .select-moderno::picker(select) {
   background-color: #464469;

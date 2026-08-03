@@ -61,3 +61,38 @@ button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
+.vector-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  padding: 4px;
+}
+
+.vector-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 55px;
+  border: 1px solid #3f51b5;
+  background-color: #e8eaf6;
+  font-family: sans-serif;
+}
+
+.index {
+  background-color: #c2a9a1;
+  font-size: 11px;
+  color: #752626;
+  border-bottom: 0px solid #c5cae9;
+  width: 100%;
+  text-align: center;
+}
+
+.value {
+  font-size: 12px;
+  font-weight: bold;
+  color: #1a237e;
+  margin-top: 4px;
+}

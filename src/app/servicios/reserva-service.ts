@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Reserva } from '../entidades/reserva';
 import { Observable } from 'rxjs';
+import { UsuarioDto } from '../entidades/DTO/usuario-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class ReservaService {
 
       // Esta URL genera el listado de todos los customer en el backeng
   private baseURL = "http://localhost:8080/api/v1/reservas";
+  private baseURL2 = "http://localhost:8080/api/v1/usuarios";
 
   // Este metodo obtiene la lista de Reservas
   obtenerListaDeReservas():Observable<Reserva[]>{
@@ -23,6 +25,10 @@ export class ReservaService {
     return this.httpClient.post(`${this.baseURL}`, reservaObjeto)
   }
 
+  // Este metodo obtiene la lista de Canchas
+  consultarUsuarioReserva():Observable<UsuarioDto>{
+    return this.httpClient.get<UsuarioDto>(`${this.baseURL2}`);
+  }
 
 
 }

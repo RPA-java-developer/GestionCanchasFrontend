@@ -3,7 +3,7 @@ export class Cancha {
   nombre: string;
   tipo: string;
   capacidad: number;
-  apertura: string;
-  cierre: string;
+  apertura: number;
+  cierre: number;
   tarifa: number;
 }

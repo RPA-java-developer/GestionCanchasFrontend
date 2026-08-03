@@ -1,0 +1,38 @@
+<div class="wizard-container">
+  <h3>Paso {{ paso }} de 2</h3>
+
+
+  <form [formGroup]="wizardForm" (ngSubmit)="enviar()">
+
+    <!-- PASO 1 -->
+    <div *ngIf="paso === 1">
+      <h4>Información Personal</h4>
+      <label>Nombre:</label>
+      <input formControlName="nombre" type="text" />
+
+      <br>
+      <label>Correo Electrónico:</label>
+      <input formControlName="email" type="email" />
+      <br>
+      <br>
+      <button type="button" (click)="siguiente()">Siguiente</button>
+    </div>
+
+    <!-- PASO 2 -->
+    <div *ngIf="paso === 2">
+      <h4>Ubicación</h4>
+      <label>Ciudad:</label>
+      <input formControlName="ciudad" type="text" />
+      <br>
+      <label>País:</label>
+      <input formControlName="pais" type="text" />
+      <br>
+      <br>
+      <button type="button" (click)="anterior()">Anterior</button>
+      <button type="submit" [disabled]="wizardForm.invalid">Finalizar</button>
+    </div>
+
+  </form>
+
+
+</div>

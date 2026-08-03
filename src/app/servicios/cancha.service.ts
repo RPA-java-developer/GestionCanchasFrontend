@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cancha } from '../entidades/cancha';
 import { HttpClient } from '@angular/common/http';
+import { CanchaDisponibilidadDto } from '../entidades/DTO/cancha-disponibilidad-dto';
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +15,8 @@ export class CanchaService {
   // Esta URL genera el listado de todos los customer en el backeng
   private baseURL = "http://localhost:8080/api/v1/canchas";
   private baseURL2 = "http://localhost:8080/api/v1/listanombrecancha";
+  private baseURL3 = "http://localhost:8080/api/v1/canchadisponibilidad";
+
 
   // Este metodo obtiene la lista de Canchas
   obtenerListaDeCanchas():Observable<Cancha[]>{
@@ -30,5 +34,12 @@ export class CanchaService {
   obtenerNombresDeCanchas():Observable<string[]>{
     return this.httpClient.get<string[]>(`${this.baseURL2}`);
   }
+
+  // Este metodo obtiene la lista de Canchas
+  consultarDisponibilidadCancha(_idCancha: number, _fechaDisponibilidad: string):Observable<CanchaDisponibilidadDto>{
+    return this.httpClient.get<CanchaDisponibilidadDto>(`${this.baseURL3}?idCancha=${_idCancha}&fechaDisponibilidad=${_fechaDisponibilidad}`);
+  }
+
+
 
 }

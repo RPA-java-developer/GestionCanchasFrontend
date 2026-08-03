@@ -50,7 +50,6 @@
       <option [value]="item" *ngFor="let item of listaTipo">{{item}}</option>
       </select>
       </p>
-
     </div>
 
 
@@ -73,7 +72,21 @@
           required="true"  value="{{ selectedDateTime1() | date:'medium' }}" >
       </div>
       -->
+
+
+    <br/>
+    <div>
+      <label>Apertura Nueva:</label>
+      <p>
+      <select class="select-moderno" name="miselect" [(ngModel)]="cancha.tipo">
+      <option [value]="item" *ngFor="let item of listaTipo">{{item}}</option>
+      </select>
+      </p>
+    </div>
+
+
 <br/>
+<!--
 <div class="p-6">
   <label class="block mb-2 font-medium">Apertura:</label>
 
@@ -91,11 +104,13 @@
     [(value)]="selectedDateTime1"
     >
   </ngxsmk-datepicker>
-
+-->
 <!--
   <p class="mt-4">Valor actual: {{ selectedDateTime1() | date:'medium' }}</p>
 -->
+  <!--
 </div>
+-->
 
         <!-- Mensaje de error para FECHAS APERTURA-->
         <div *ngIf= fechasError >
@@ -115,6 +130,7 @@
       </div>
       -->
 <br/>
+<!--
     <div class="p-6">
       <label class="block mb-2 font-medium">Cierre:</label>
 
@@ -134,8 +150,9 @@
       <!--
       <p class="mt-4">Valor actual: {{ selectedDateTime2() | date:'medium' }}</p>
       -->
-
+<!--
     </div>
+    -->
         <!-- Mensaje de error para FECHAS CIERRE-->
         <div *ngIf= fechasError >
           <small class="text-danger">La fecha de Cierre debe ser mayor a la fecha de Apertura"</small>

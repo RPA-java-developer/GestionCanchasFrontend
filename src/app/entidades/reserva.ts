@@ -3,6 +3,7 @@ export class Reserva {
   idCancha: number;
   idUsuario: number;
   fechaReserva: string;
+  tiempoDisponibilidad:number;
   horaInicioReserva: number;
   tiempoReservado: number;
 }

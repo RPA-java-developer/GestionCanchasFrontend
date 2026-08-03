@@ -146,7 +146,11 @@ export class RegistrarCancha implements OnInit {
     this.router.navigate(['/canchas']);
   }
 
+    validarFechas(_fecha1: number, _fecha2: number): void {
 
+    }
+
+  /*
   validarFechas(_fecha1: string, _fecha2: string): void {
 
     console.log('Fecha 1:', _fecha1);
@@ -183,7 +187,7 @@ export class RegistrarCancha implements OnInit {
       }
     }
   }
-
+ */
 
   validarCapacidad(_capacidad: number): void {
     console.log('Capacidad: ', _capacidad);
@@ -246,6 +250,7 @@ export class RegistrarCancha implements OnInit {
               console.log(this.cancha.apertura);
               console.log(this.cancha.cierre);
 
+              /*
               this.fechaApertura = new Date(this.cancha.apertura  ?? "");
               //console.log('fechaApertura ', this.fechaApertura);
               const yearA = this.fechaApertura.getFullYear();
@@ -257,7 +262,8 @@ export class RegistrarCancha implements OnInit {
               const formattedA = `${yearA}-${monthA}-${dayA}T${hoursA}:${minutesA}:${secondsA}`;
               //console.log('formatted ', formattedA);
               this.cancha.apertura = formattedA;
-
+              */
+              /*
               this.fechaCierre = new Date(this.cancha.cierre  ?? "");
               //console.log('fechaCierre ', this.fechaCierre);
               const yearC = this.fechaCierre.getFullYear();
@@ -269,6 +275,7 @@ export class RegistrarCancha implements OnInit {
               const formattedC = `${yearC}-${monthC}-${dayC}T${hoursC}:${minutesC}:${secondsC}`;
              // console.log('formatted ', formattedC);
               this.cancha.cierre = formattedC;
+              */
 
              console.log('a ',this.cancha.apertura);
              console.log('b ',this.cancha.cierre);
@@ -281,6 +288,7 @@ export class RegistrarCancha implements OnInit {
               console.log(this.cancha.apertura);
               console.log(this.cancha.cierre);
 
+              /*
               this.fechaApertura = new Date(this.cancha.apertura  ?? "");
               //console.log('fechaApertura ', this.fechaApertura);
               const yearA = this.fechaApertura.getFullYear();
@@ -305,6 +313,7 @@ export class RegistrarCancha implements OnInit {
               const formattedC = `${yearC}-${monthC}-${dayC}T${hoursC}:${minutesC}:${secondsC}`;
              // console.log('formatted ', formattedC);
               this.cancha.cierre = formattedC;
+              */
 
              console.log('a ',this.cancha.apertura);
              console.log('b ',this.cancha.cierre);

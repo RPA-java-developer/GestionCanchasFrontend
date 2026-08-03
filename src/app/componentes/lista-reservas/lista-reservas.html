@@ -9,6 +9,7 @@
       <th>fechaReserva</th>
       <th>horaInicio</th>
       <th>tiempoReservado</th>
+      <th>Acciones</th>
     </tr>
   </thead>
 
@@ -22,6 +23,15 @@
         <td>{{ item.fechaReserva }}</td>
         <td>{{ item.horaInicioReserva }}</td>
         <td>{{ item.tiempoReservado }}</td>
+      <td >
+        <div>
+          <button  class="btn btn-elegante">Editar</button>
+          <button class="btn-danger" (click)="eliminarReserva(item.idReserva)" style="margin-left: 10px;">Eliminar</button>
+          <!--
+          <button  class="btn btn-primary" style="margin-left: 10px;">Detalles</button>
+          -->
+        </div>
+      </td>
       </tr>
     } @empty {
         <td>--</td>

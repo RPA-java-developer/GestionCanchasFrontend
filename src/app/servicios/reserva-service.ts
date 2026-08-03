@@ -30,5 +30,8 @@ export class ReservaService {
     return this.httpClient.get<UsuarioDto>(`${this.baseURL2}`);
   }
 
+  eliminarReserva(id:number): Observable<Object> {
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
 
 }

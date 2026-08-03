@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { Reserva } from '../../entidades/reserva';
 import { ReservaService } from '../../servicios/reserva-service';
-
+import swal from 'sweetalert2'
 @Component({
   selector: 'app-lista-reservas',
   imports: [],
@@ -48,6 +48,35 @@ export class ListaReservas implements OnInit {
       //this.cdr.detectChanges();
     })
   };
+
+
+  eliminarReserva(id:number){
+    (swal as any).fire({
+      title: '¿Estas seguro?',
+      text: "Confirma si deseas eliminar la Reservación",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si , elimínala',
+      cancelButtonText: 'No, cancelar',
+      confirmButtonClass: 'btn btn-success',
+      cancelButtonClass: 'btn btn-danger',
+      buttonsStyling: true
+    }).then((result: { value: any; }) => {
+      if(result.value){
+        this.reservaServicio.eliminarReserva(id).subscribe(dato => {
+          console.log(dato);
+          this.obtenerReservas();
+          (swal as any).fire({
+            title: 'Reservación eliminada',
+            text: 'La Reserva ha sido eliminada con exito',
+            icon: 'success'
+          });
+        })
+      }
+    })
+  }
 
 
 }

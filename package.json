@@ -21,6 +21,7 @@
     "@angular/router": "^21.2.0",
     "ngxsmk-datepicker": "^3.0.3",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^7.26.9",
     "tslib": "^2.3.0"
   },
   "devDependencies": {

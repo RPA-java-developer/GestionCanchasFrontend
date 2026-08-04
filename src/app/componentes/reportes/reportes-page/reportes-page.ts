@@ -21,80 +21,76 @@ interface ReportItem {
 })
 export class ReportesPage implements OnInit {
 
-  reporteUnoDto:ReproteUnoDto[]=[];
+  //reporteUnoDto:ReproteUnoDto[]=[];
 
-  // Señal con los datos originales
-
-  private reports = signal<ReportItem[]>([
-    { id: 1, name: 'Reporte de Ventas Enero', amount: 450, date: '2026-01-15' },
-    { id: 2, name: 'Reporte de Ventas Febrero', amount: 820, date: '2026-02-20' },
-    { id: 3, name: 'Reporte de Soporte', amount: 150, date: '2026-03-10' },
-    { id: 4, name: 'Reporte de Licencias', amount: 1200, date: '2026-04-05' }
-  ]);
-
-
+  private reporteUnoDto = signal<ReproteUnoDto[]>([]);
 
   // Filtro activo
-  private filter = signal<'all' | 'high'>('all');
+  private filterUno = signal<'todos' | 'igual'>('todos');
 
 
 
-  constructor(private reservaServicio:ReservaService, ) {
 
-  }
+  constructor(private reservaServicio:ReservaService, ){}
 
 
   ngOnInit(): void {
     this.obtenerReporteUno();
   }
 
+
   private obtenerReporteUno() {
     this.reservaServicio.consultarReporteUno('2026-07-31', '2026-08-20').subscribe(
       {
         next: (dato) => {
           console.log('dato: ',dato);
-          this.reporteUnoDto = dato;
+          this.reporteUnoDto.set(dato);
         },
         error: (error) => {
           console.error('Ocurrió un error:', error);
         },
         complete: () => {
             console.info('complete');
-            console.log(this.reporteUnoDto);
+            //console.log(this.reporteUnoDto);
         }
       });
   };
 
 
+
+
+
   // Señal computada para filtrar elementos dinámicamente
-  filteredReports = computed(() => {
-    const currentFilter = this.filter();
-    const items = this.reports();
-    //const items = this.reporteUnoDto;
-    if (currentFilter === 'high') {
-      return items.filter(i => i.amount > 500);
-      //return items.filter(i => i.idCancha = 2);
+  filtroReportes = computed(() => {
+
+    const currentFiltro = this.filterUno();
+
+    const texto = this.filterUno().toLowerCase();
+    const itemsUno = this.reporteUnoDto();
+    if (currentFiltro === 'igual') {
+
+      return this.reporteUnoDto().filter(
+        //reserva => reserva.totalReservas >= 5
+        //reserva => reserva.totalTiempoReservas >= 4
+        //reserva => reserva.tarifa >= 24
+          reserva => reserva.idCancha == 2
+      )
     }
-    return items;
+    return itemsUno;
+
   });
 
+
   // Señales computadas para métricas
-  totalCount = computed(() => this.filteredReports().length);
-  totalSum = computed(() => this.filteredReports().reduce((acc, curr) => acc + curr.amount, 0));
+  totalRegistros = computed(() => this.filtroReportes().length);
+  totalReservas = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.totalReservas, 0));
+  totalHorasReservadas = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.totalTiempoReservas, 0));
+  //totalReservas = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.totalReservas, 0));
 
-  filterData(type: 'all' | 'high') {
-    this.filter.set(type);
+
+  filterDatos(typeUno: 'todos' | 'igual') {
+    this.filterUno.set(typeUno);
   }
-
-
-
-
-
-
-
-
-
-
 
 
 

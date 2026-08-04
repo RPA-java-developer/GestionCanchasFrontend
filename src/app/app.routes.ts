@@ -4,7 +4,7 @@ import { ListaCanchas } from './componentes/lista-canchas/lista-canchas';
 import { RegistrarCancha } from './componentes/registrar-cancha/registrar-cancha';
 import { ListaReservas } from './componentes/lista-reservas/lista-reservas';
 import { RegistrarReserva } from './componentes/registrar-reserva/registrar-reserva';
-import { Wizard } from './componentes/wizard/wizard';
+import { ReportesPage } from './componentes/reportes/reportes-page/reportes-page';
 
 
 
@@ -15,6 +15,6 @@ export const routes: Routes = [
   { path: 'registrar-cancha', component: RegistrarCancha },
   { path: 'reservas', component: ListaReservas },
   { path: 'registrar-reserva', component: RegistrarReserva },
-  { path: 'wizard', component: Wizard },
+  { path: 'reportes',  component: ReportesPage }
 
 ];

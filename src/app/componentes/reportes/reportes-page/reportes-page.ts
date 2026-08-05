@@ -20,6 +20,7 @@ interface ReportItem {
   styleUrl: './reportes-page.css',
 })
 export class ReportesPage implements OnInit {
+  [x: string]: any;
 
   //reporteUnoDto:ReproteUnoDto[]=[];
 
@@ -45,6 +46,8 @@ export class ReportesPage implements OnInit {
         next: (dato) => {
           console.log('dato: ',dato);
           this.reporteUnoDto.set(dato);
+
+          this.agregarCalculoPagos();
         },
         error: (error) => {
           console.error('Ocurrió un error:', error);
@@ -57,7 +60,24 @@ export class ReportesPage implements OnInit {
   };
 
 
+  agregarCalculoPagos(){
 
+    const itemsUno = this.reporteUnoDto();
+
+    for (let parte of  itemsUno) {
+
+      console.log('Parte: ',parte.idCancha);
+      console.log('Parte: ',parte.ingresos);
+      console.log('Parte: ',parte.totalTiempoReservas);
+      console.log('Parte: ',parte.tarifa);
+      console.log('Parte: ', parte.totalTiempoReservas * parte.tarifa);
+      parte.ingresos = (parte.totalTiempoReservas * parte.tarifa);
+      console.log('Parte INGRESOS: ',parte.ingresos);
+
+    }
+
+
+  }
 
 
   // Señal computada para filtrar elementos dinámicamente
@@ -85,7 +105,7 @@ export class ReportesPage implements OnInit {
   totalRegistros = computed(() => this.filtroReportes().length);
   totalReservas = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.totalReservas, 0));
   totalHorasReservadas = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.totalTiempoReservas, 0));
-  //totalReservas = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.totalReservas, 0));
+  totalIngresos = computed(() => this.filtroReportes().reduce((acc, curr) => acc + curr.ingresos, 0));
 
 
   filterDatos(typeUno: 'todos' | 'igual') {

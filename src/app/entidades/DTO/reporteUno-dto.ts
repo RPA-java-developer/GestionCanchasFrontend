@@ -5,4 +5,5 @@ export interface ReproteUnoDto {
   totalTiempoReservas: number;
   numeroDias: number;
   tarifa:number;
+  ingresos:number;
 }

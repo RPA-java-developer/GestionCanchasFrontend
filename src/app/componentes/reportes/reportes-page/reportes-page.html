@@ -1,5 +1,6 @@
-    <div class="p-6">
-      <h1 class="text-2xl font-bold mb-4">Página de Reportes</h1>
+<div class="col-md-6  offset-md-3">
+  <h3 class="text-center">Generación de Reportes</h3>
+      <h3 class="text-center">Reporte Uno</h3>
 
       <!-- Filtro rápido -->
       <div class="mb-4">
@@ -14,6 +15,7 @@
         <p>Total de registros: {{ totalRegistros() }}</p>
         <p>Total reservas: $ {{ totalReservas() }}</p>
         <p>Total horas reservadas: $ {{ totalHorasReservadas() }}</p>
+        <p>Total ingresos: $ {{ totalIngresos() }}</p>
       </div>
 
         <br>
@@ -28,6 +30,7 @@
             <th class="border border-gray-300 p-2">totalTiempoReservas</th>
             <th class="border border-gray-300 p-2">dias</th>
             <th class="border border-gray-300 p-2">Tarofa</th>
+            <th class="border border-gray-300 p-2">Ingresos</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +44,7 @@
               <td class="border border-gray-300 p-2 text-right">{{ reserva.totalTiempoReservas }} horas</td>
               <td class="border border-gray-300 p-2 text-center">{{ reserva.numeroDias }} días</td>
               <td class="border border-gray-300 p-2 text-center">${{ reserva.tarifa }}.00</td>
+              <td class="border border-gray-300 p-2 text-center">${{ reserva.ingresos }}.00</td>
             </tr>
           }
 

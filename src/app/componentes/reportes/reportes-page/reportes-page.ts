@@ -66,13 +66,13 @@ export class ReportesPage implements OnInit {
 
     for (let parte of  itemsUno) {
 
-      console.log('Parte: ',parte.idCancha);
-      console.log('Parte: ',parte.ingresos);
-      console.log('Parte: ',parte.totalTiempoReservas);
-      console.log('Parte: ',parte.tarifa);
-      console.log('Parte: ', parte.totalTiempoReservas * parte.tarifa);
+      //console.log('Parte: ',parte.idCancha);
+      //console.log('Parte: ',parte.ingresos);
+      //console.log('Parte: ',parte.totalTiempoReservas);
+      //console.log('Parte: ',parte.tarifa);
+      //console.log('Parte: ', parte.totalTiempoReservas * parte.tarifa);
       parte.ingresos = (parte.totalTiempoReservas * parte.tarifa);
-      console.log('Parte INGRESOS: ',parte.ingresos);
+      //console.log('Parte INGRESOS: ',parte.ingresos);
 
     }
 
